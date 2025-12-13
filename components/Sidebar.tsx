@@ -6,29 +6,29 @@ import { useStore } from "@/store/useStore";
 
 export default function Sidebar() {
     const pathname = usePathname();
-    const { introFinished, resetIntro } = useStore(); // Use the new reset function
+    const { introFinished, resetIntro } = useStore();
 
     // Hide sidebar if intro is running
     if (!introFinished) return null;
 
     const handleReplay = () => {
         sessionStorage.removeItem("hasVisited");
-        resetIntro(); // This does everything now
+        resetIntro();
     };
 
     return (
         <aside className="hidden w-[300px] flex-col justify-between border-r border-industrial-ink/10 p-8 md:flex fixed h-full z-20 bg-industrial-paper">
             {/* Top: Identity */}
             <div>
-                <h1 className="font-serif text-4xl leading-none">
-                    Raphael
-                    <br />
-                    Murillo
+                {/* CHANGED: Smaller font, single line, middle initial added */}
+                <h1 className="font-serif text-2xl leading-none text-industrial-ink whitespace-nowrap">
+                    Raphael C. Murillo
                 </h1>
                 <div className="mt-4 flex items-center gap-2">
                     <span className="h-2 w-2 bg-industrial-orange rounded-full animate-pulse"></span>
+                    {/* CHANGED: Updated Degree Text */}
                     <p className="font-mono text-[10px] tracking-widest text-industrial-dim uppercase">
-                        Mech. Engineer // DLSU
+                        MECH. ENGINEERING // DLSU
                     </p>
                 </div>
             </div>
@@ -53,9 +53,10 @@ export default function Sidebar() {
                     id="02"
                     active={pathname.includes("/lab")}
                 />
+                {/* CHANGED: Renamed SPECS to ABOUT ME */}
                 <NavItem
                     href="/specs"
-                    label="SPECS"
+                    label="ABOUT ME"
                     id="03"
                     active={pathname.includes("/specs")}
                 />
@@ -64,7 +65,10 @@ export default function Sidebar() {
             {/* Bottom: Status & Replay */}
             <div className="font-mono text-[10px] text-industrial-dim space-y-4">
                 <div>
-                    <p>STATUS: ONLINE</p>
+                    {/* CHANGED: Status update */}
+                    <p className="text-industrial-orange">
+                        AVAILABLE FOR INTERNSHIPS
+                    </p>
                     <p>LOC: MANILA, PH</p>
                 </div>
 
