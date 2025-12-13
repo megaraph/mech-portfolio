@@ -8,12 +8,7 @@ export default function Intro() {
     const { introFinished, setIntroFinished } = useStore();
     const [phase, setPhase] = useState<"dream" | "reality">("dream");
 
-    // --- DELETE THE OLD useEffect THAT CAUSED THE ERROR ---
-    // We don't need to manually reset 'phase' anymore because
-    // the 'key' prop in page.tsx destroys and recreates this whole component.
-
     useEffect(() => {
-        // 1. Check session storage on mount
         const hasVisited = sessionStorage.getItem("hasVisited");
         if (hasVisited) {
             setIntroFinished(true);
@@ -21,7 +16,6 @@ export default function Intro() {
         }
 
         const handleKeyDown = (e: KeyboardEvent) => {
-            // Logic: Only trigger if key is Enter AND we are currently in 'dream'
             if (e.key === "Enter" && phase === "dream") {
                 setPhase("reality");
 
@@ -55,7 +49,8 @@ export default function Intro() {
                             exit={{ opacity: 0, filter: "blur(10px)" }}
                             className="text-center"
                         >
-                            <h1 className="font-serif text-3xl italic text-industrial-ink md:text-5xl">
+                            {/* CHANGED: Decreased font size */}
+                            <h1 className="font-serif text-xl italic text-industrial-ink md:text-2xl">
                                 i once had a dream
                             </h1>
                             <div className="mt-12 flex flex-col items-center gap-2">
