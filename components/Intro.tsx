@@ -9,7 +9,7 @@ export default function Intro() {
     const [phase, setPhase] = useState<"dream" | "reality">("dream");
 
     useEffect(() => {
-        // Check if user has already visited in this session
+        // Check session storage on mount
         const hasVisited = sessionStorage.getItem("hasVisited");
         if (hasVisited) {
             setIntroFinished(true);
@@ -20,7 +20,7 @@ export default function Intro() {
             if (e.key === "Enter" && phase === "dream") {
                 setPhase("reality");
 
-                // Wait 2.2 seconds for the "Reality" impact, then lift the curtain
+                // Wait 2.2 seconds for the impact, then lift curtain
                 setTimeout(() => {
                     setIntroFinished(true);
                     sessionStorage.setItem("hasVisited", "true");
@@ -78,7 +78,7 @@ export default function Intro() {
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.1 }} // Instant snap
+                            transition={{ duration: 0.1 }}
                             className="text-center"
                         >
                             <div className="relative inline-block mb-6">

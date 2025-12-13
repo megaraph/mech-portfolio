@@ -1,20 +1,31 @@
 "use client";
 
 import Intro from "@/components/Intro";
+import { useStore } from "@/store/useStore";
+import { MouseEvent, useState } from "react";
 
 export default function Home() {
+    const { setIntroFinished } = useStore();
+    // 1. New State: A unique key to force-reset the component
+    const [introKey, setIntroKey] = useState(0);
+
+    const handleReplay = (e: MouseEvent<HTMLButtonElement>) => {
+        e.currentTarget.blur();
+        sessionStorage.removeItem("hasVisited");
+
+        // 2. Increment the key (Forces React to destroy old Intro and build a new one)
+        setIntroKey((prev) => prev + 1);
+        setIntroFinished(false);
+    };
+
     return (
         <main className="min-h-screen w-full relative bg-industrial-paper text-industrial-ink overflow-hidden selection:bg-industrial-orange selection:text-white">
-            {/* 1. THE INTRO LAYER (Z-Index 50) */}
-            {/* This sits on top and slides up when finished */}
-            <Intro />
+            {/* 3. Pass the key here. When it changes, Intro resets completely. */}
+            <Intro key={introKey} />
 
-            {/* 2. THE MAIN SYSTEM (Z-Index 0) */}
-            {/* This is the actual portfolio that gets revealed */}
             <div className="flex h-screen w-full">
-                {/* GLOBAL SIDEBAR (Fixed Left) */}
+                {/* GLOBAL SIDEBAR */}
                 <aside className="hidden w-[300px] flex-col justify-between border-r border-industrial-ink/10 p-8 md:flex z-10 bg-industrial-paper/80 backdrop-blur-sm">
-                    {/* Top: Identity */}
                     <div>
                         <h1 className="font-serif text-4xl leading-none">
                             Raphael
@@ -29,7 +40,6 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Middle: Navigation System */}
                     <nav className="flex flex-col gap-3 font-mono text-sm">
                         <div className="flex items-center gap-3 text-industrial-orange font-bold cursor-pointer">
                             <span>[00]</span>
@@ -55,17 +65,28 @@ export default function Home() {
                         </div>
                     </nav>
 
-                    {/* Bottom: Status */}
-                    <div className="font-mono text-[10px] text-industrial-dim">
-                        <p>STATUS: ONLINE</p>
-                        <p>LOC: MANILA, PH</p>
-                        <p className="mt-2 text-industrial-ink/40">© 2025</p>
+                    <div className="font-mono text-[10px] text-industrial-dim space-y-4">
+                        <div>
+                            <p>STATUS: ONLINE</p>
+                            <p>LOC: MANILA, PH</p>
+                        </div>
+
+                        <button
+                            onClick={handleReplay}
+                            className="group flex w-full items-center justify-between border border-industrial-ink/20 px-3 py-2 text-[10px] uppercase hover:bg-industrial-orange hover:text-white hover:border-industrial-orange transition-all cursor-pointer"
+                        >
+                            <span>Replay Intro</span>
+                            <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                ↵
+                            </span>
+                        </button>
+
+                        <p className="text-industrial-ink/40">© 2025</p>
                     </div>
                 </aside>
 
-                {/* MAIN CONTENT AREA (Scrollable Right) */}
+                {/* MAIN CONTENT AREA */}
                 <section className="flex-1 relative overflow-y-auto">
-                    {/* The Dot Grid Texture (Absolute Background) */}
                     <div
                         className="absolute inset-0 pointer-events-none opacity-[0.03]"
                         style={{
@@ -75,9 +96,7 @@ export default function Home() {
                         }}
                     />
 
-                    {/* The Content Container */}
                     <div className="relative z-10 min-h-full p-6 md:p-12 lg:p-20">
-                        {/* Section Header */}
                         <div className="mb-12 md:mb-20">
                             <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl opacity-100">
                                 Selected
@@ -86,9 +105,7 @@ export default function Home() {
                             </h2>
                         </div>
 
-                        {/* The "Bill of Materials" Table */}
                         <div className="w-full border-t border-industrial-ink">
-                            {/* Table Header */}
                             <div className="grid grid-cols-12 py-3 text-[10px] font-mono tracking-widest text-industrial-dim uppercase border-b border-industrial-ink/10">
                                 <div className="col-span-1">ID</div>
                                 <div className="col-span-6 md:col-span-7">
@@ -102,7 +119,6 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            {/* Project Rows */}
                             <ProjectRow
                                 id="01"
                                 title="Cycloidal Drive Actuator"
@@ -139,7 +155,6 @@ export default function Home() {
     );
 }
 
-// A simple sub-component for the table rows to keep code clean
 function ProjectRow({
     id,
     title,
@@ -170,8 +185,8 @@ function ProjectRow({
                     font-mono text-[9px] px-2 py-1 rounded-full border
                     ${
                         isPhysical
-                            ? "bg-industrial-ink text-white border-industrial-ink" // Solid Pill (Physical)
-                            : "bg-transparent text-industrial-ink border-industrial-ink" // Hollow Pill (Digital)
+                            ? "bg-industrial-ink text-white border-industrial-ink"
+                            : "bg-transparent text-industrial-ink border-industrial-ink"
                     }
                 `}
                 >
