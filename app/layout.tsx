@@ -29,16 +29,14 @@ export default function RootLayout({
             <body
                 className={`${serifFont.variable} ${monoFont.variable} bg-industrial-paper text-industrial-ink antialiased overflow-x-hidden selection:bg-industrial-orange selection:text-white`}
             >
-                {/* GLOBAL DOTTED BACKGROUND - FIX 3 */}
+                {/* GLOBAL DOTTED BACKGROUND */}
                 <div
                     className="fixed inset-0 pointer-events-none z-0"
                     style={{
-                        // Changed from transparent to a stronger dot color (#111)
-                        // Increased opacity from 0.05 to 0.08
                         backgroundImage:
-                            "radial-gradient(#111 1px, transparent 1px)",
+                            "radial-gradient(#1A1A1A 1px, transparent 1px)",
                         backgroundSize: "24px 24px",
-                        opacity: 0.08,
+                        opacity: 0.15, // CHANGED: Bumped up from 0.08 to 0.15 for better visibility
                     }}
                 />
 
