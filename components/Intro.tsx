@@ -8,8 +8,12 @@ export default function Intro() {
     const { introFinished, setIntroFinished } = useStore();
     const [phase, setPhase] = useState<"dream" | "reality">("dream");
 
+    // --- DELETE THE OLD useEffect THAT CAUSED THE ERROR ---
+    // We don't need to manually reset 'phase' anymore because
+    // the 'key' prop in page.tsx destroys and recreates this whole component.
+
     useEffect(() => {
-        // Check session storage on mount
+        // 1. Check session storage on mount
         const hasVisited = sessionStorage.getItem("hasVisited");
         if (hasVisited) {
             setIntroFinished(true);
@@ -17,10 +21,10 @@ export default function Intro() {
         }
 
         const handleKeyDown = (e: KeyboardEvent) => {
+            // Logic: Only trigger if key is Enter AND we are currently in 'dream'
             if (e.key === "Enter" && phase === "dream") {
                 setPhase("reality");
 
-                // Wait 2.2 seconds for the impact, then lift curtain
                 setTimeout(() => {
                     setIntroFinished(true);
                     sessionStorage.setItem("hasVisited", "true");
