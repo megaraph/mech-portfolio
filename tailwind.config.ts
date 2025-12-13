@@ -10,10 +10,10 @@ const config: Config = {
         extend: {
             colors: {
                 industrial: {
-                    paper: "#F5F5F7", // The Muji Background
-                    ink: "#1A1A1A", // Almost Black
-                    orange: "#FF4F00", // Safety Orange
-                    dim: "#888888", // Technical Grey
+                    paper: "#F7F5F0", // CHANGED: Warmer, creamier off-white
+                    ink: "#1A1A1A",
+                    orange: "#FF4F00",
+                    dim: "#888888",
                 },
             },
             fontFamily: {
