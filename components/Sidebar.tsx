@@ -17,7 +17,7 @@ export default function Sidebar() {
     return (
         // Wrap with AnimatePresence for enter/exit animations
         <AnimatePresence>
-            {introFinished && (
+            {(introFinished || pathname !== "/") && (
                 <motion.aside
                     className="hidden w-[300px] flex-col justify-between border-r border-industrial-ink/10 p-8 md:flex fixed h-full z-20 bg-industrial-paper"
                     initial={{ x: "-100%" }} // Start off-screen left
