@@ -1,0 +1,151 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { projectsData } from "@/store/projectsData";
+
+export default function WorksPage() {
+    const router = useRouter();
+    const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+
+    return (
+        <div className="min-h-screen p-6 md:p-12 lg:p-20">
+            {/* HEADER */}
+            <div className="mb-12 pt-10 md:pt-0">
+                <h1 className="font-serif text-5xl font-semibold leading-[1.1] mb-2 text-industrial-ink">
+                    All Works
+                </h1>
+                <p className="font-mono text-sm text-industrial-ink/60 uppercase tracking-wide">
+                    A DATABASE OF ALL MY DESIGN + ENGINEERING WORK
+                </p>
+            </div>
+
+            {/* LEGEND */}
+            <div className="flex gap-6 mb-8 pb-6 border-b border-industrial-ink/10">
+                <div className="flex items-center gap-2">
+                    <div className="px-3 py-1 rounded-full bg-industrial-ink text-industrial-paper font-mono text-xs">
+                        SOLID
+                    </div>
+                    <span className="font-mono text-xs text-industrial-ink/60 uppercase">
+                        Physical Work
+                    </span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <div className="px-3 py-1 rounded-full border border-industrial-ink text-industrial-ink font-mono text-xs">
+                        HOLLOW
+                    </div>
+                    <span className="font-mono text-xs text-industrial-ink/60 uppercase">
+                        Digital Work
+                    </span>
+                </div>
+            </div>
+
+            {/* TABLE */}
+            <div className="w-full relative">
+                {/* Header */}
+                <div className="grid grid-cols-12 gap-4 pb-3 border-b border-industrial-ink/20 font-mono uppercase text-xs font-semibold text-industrial-dim tracking-wider">
+                    <div className="col-span-1">ID</div>
+                    <div className="col-span-4 md:col-span-4">Project Name</div>
+                    <div className="col-span-3 hidden md:block">Skills</div>
+                    <div className="col-span-2 hidden md:block">Category</div>
+                    <div className="col-span-2 md:col-span-1">Year</div>
+                    <div className="col-span-3 md:col-span-1 text-right">
+                        Type
+                    </div>
+                </div>
+
+                {/* Rows */}
+                {projectsData.map((project, index) => {
+                    const isHovered = hoveredProject === project.id;
+                    const isDimmed = hoveredProject !== null && !isHovered;
+
+                    return (
+                        <motion.div
+                            key={project.id}
+                            className={`hover-target grid grid-cols-12 gap-4 py-4 border-b border-industrial-ink/10 cursor-pointer group relative items-center transition-all duration-300 ${
+                                isDimmed
+                                    ? "opacity-30 blur-[0.5px]"
+                                    : "opacity-100"
+                            }`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                                duration: 0.3,
+                                delay: index * 0.05,
+                            }}
+                            onMouseEnter={() => setHoveredProject(project.id)}
+                            onMouseLeave={() => setHoveredProject(null)}
+                            onClick={() => router.push(`/works/${project.id}`)}
+                        >
+                            <div className="col-span-1 font-mono text-sm text-industrial-dim group-hover:text-industrial-orange transition-colors">
+                                {project.id}
+                            </div>
+                            <div className="col-span-4 md:col-span-4 font-mono text-sm font-medium text-industrial-ink group-hover:text-industrial-orange transition-colors">
+                                {project.name}
+                            </div>
+                            <div className="col-span-3 hidden md:block font-mono text-[10px] text-industrial-dim uppercase tracking-tight">
+                                {project.skills}
+                            </div>
+                            <div className="col-span-2 hidden md:block">
+                                <span className="font-mono text-[10px] px-2 py-1 rounded bg-industrial-ink/5 text-industrial-dim uppercase">
+                                    {project.category}
+                                </span>
+                            </div>
+                            <div className="col-span-2 md:col-span-1 font-mono text-xs text-industrial-ink">
+                                {project.year}
+                            </div>
+                            <div className="col-span-3 md:col-span-1 text-right">
+                                {project.type === "Physical" ? (
+                                    <span className="inline-flex px-3 py-1 rounded-full bg-industrial-ink text-white font-mono text-[9px] uppercase">
+                                        PHYSICAL
+                                    </span>
+                                ) : (
+                                    <span className="inline-flex px-3 py-1 rounded-full border border-industrial-ink text-industrial-ink font-mono text-[9px] uppercase">
+                                        DIGITAL
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Hover Preview */}
+                            <AnimatePresence>
+                                {isHovered && (
+                                    <motion.div
+                                        className="hidden lg:block absolute left-[85%] top-0 w-72 p-4 bg-white border border-industrial-ink/10 shadow-xl z-20 backdrop-blur-sm"
+                                        initial={{
+                                            opacity: 0,
+                                            x: -10,
+                                            scale: 0.95,
+                                        }}
+                                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                                        exit={{
+                                            opacity: 0,
+                                            x: -10,
+                                            scale: 0.95,
+                                        }}
+                                        transition={{ duration: 0.15 }}
+                                    >
+                                        <h4 className="font-mono text-xs font-bold mb-2 text-industrial-ink">
+                                            {project.name}
+                                        </h4>
+                                        <p className="font-mono text-[10px] leading-relaxed text-industrial-dim">
+                                            {project.description}
+                                        </p>
+                                        <div className="mt-3 pt-2 border-t border-industrial-ink/5 flex justify-between items-center">
+                                            <span className="font-mono text-[9px] text-industrial-orange uppercase">
+                                                View Specs
+                                            </span>
+                                            <span className="text-industrial-orange text-xs">
+                                                →
+                                            </span>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}

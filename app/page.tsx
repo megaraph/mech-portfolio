@@ -2,66 +2,14 @@
 
 import Intro from "@/components/Intro";
 import { useStore } from "@/store/useStore";
+import { projectsData } from "@/store/projectsData";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-// 1. Data Schema
-interface Project {
-    id: string;
-    name: string;
-    type: "physical" | "digital";
-    skills: string;
-    category: string;
-    year: string;
-    description: string;
-}
-
-// 2. Project Data
-const projects: Project[] = [
-    {
-        id: "001",
-        name: "Cycloidal Drive Actuator",
-        type: "physical",
-        skills: "SOLIDWORKS / FUSION 360",
-        category: "PROTOTYPE",
-        year: "2025",
-        description:
-            "High-torque robotic actuator with 20:1 reduction ratio. 3D printed ABS.",
-    },
-    {
-        id: "002",
-        name: "Iris Aperture Mechanism",
-        type: "physical",
-        skills: "DFM / TOLERANCING",
-        category: "CAD / MFG",
-        year: "2025",
-        description:
-            "Mechanical iris with 12 overlapping blades. Designed for flow control experiments.",
-    },
-    {
-        id: "003",
-        name: "Rocket Nozzle Thermodynamics",
-        type: "digital",
-        skills: "PYTHON / MATLAB",
-        category: "RESEARCH",
-        year: "2024",
-        description:
-            "CFD analysis of bell nozzle efficiency at varying altitudes using MATLAB.",
-    },
-    {
-        id: "004",
-        name: "Compliant Flexure Clamp",
-        type: "digital",
-        skills: "ANSYS / FEA",
-        category: "SIMULATION",
-        year: "2024",
-        description:
-            "Monolithic print-in-place mechanism utilizing flexure hinges for grip.",
-    },
-];
+import { useRouter } from "next/navigation";
 
 export default function Home() {
     const { introKey } = useStore();
+    const router = useRouter();
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
     return (
@@ -118,7 +66,7 @@ export default function Home() {
                     </div>
 
                     {/* Rows */}
-                    {projects.map((project, index) => {
+                    {projectsData.map((project, index) => {
                         const isHovered = hoveredProject === project.id;
                         const isDimmed = hoveredProject !== null && !isHovered;
 
@@ -141,6 +89,9 @@ export default function Home() {
                                     setHoveredProject(project.id)
                                 }
                                 onMouseLeave={() => setHoveredProject(null)}
+                                onClick={() =>
+                                    router.push(`/works/${project.id}`)
+                                }
                             >
                                 {/* ID - Now triggers Cipher on row hover */}
                                 <div className="col-span-1 font-mono text-sm text-industrial-dim group-hover:text-industrial-orange transition-colors">
@@ -174,7 +125,7 @@ export default function Home() {
 
                                 {/* Type */}
                                 <div className="col-span-3 md:col-span-1 text-right">
-                                    {project.type === "physical" ? (
+                                    {project.type === "Physical" ? (
                                         <span className="inline-flex px-3 py-1 rounded-full bg-industrial-ink text-white font-mono text-[9px] uppercase">
                                             PHYSICAL
                                         </span>
