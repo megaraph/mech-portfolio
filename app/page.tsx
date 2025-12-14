@@ -12,6 +12,8 @@ export default function Home() {
     const router = useRouter();
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
+    const featuredProjects = projectsData.filter((p) => p.featured);
+
     return (
         <>
             <Intro key={introKey} />
@@ -23,7 +25,8 @@ export default function Home() {
                         Featured Works
                     </h1>
                     <p className="font-mono text-sm text-industrial-ink/60 uppercase tracking-wide">
-                        A COMPREHENSIVE DIRECTORY OF DESIGN + ENGINEERING WORK
+                        A COMPREHENSIVE DIRECTORY OF SELECTED WORKS THAT ARE
+                        SPECIAL TO ME
                     </p>
                 </div>
 
@@ -66,7 +69,7 @@ export default function Home() {
                     </div>
 
                     {/* Rows */}
-                    {projectsData.map((project, index) => {
+                    {featuredProjects.map((project, index) => {
                         const isHovered = hoveredProject === project.id;
                         const isDimmed = hoveredProject !== null && !isHovered;
 

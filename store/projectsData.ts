@@ -13,6 +13,7 @@ export interface ProjectMetric {
 export interface ProjectData {
     id: string;
     name: string;
+    featured?: boolean;
     type: "Physical" | "Digital";
     role: string;
     duration: string;
@@ -109,6 +110,7 @@ export const projectsData: ProjectData[] = [
     {
         id: "002",
         name: "Iris Aperture Mechanism",
+        featured: true,
         type: "Physical",
         role: "Lead Designer",
         duration: "6 Weeks",
@@ -202,6 +204,7 @@ export const projectsData: ProjectData[] = [
     {
         id: "004",
         name: "Compliant Flexure Clamp",
+        featured: true,
         type: "Digital",
         role: "Solo Engineer",
         duration: "4 Weeks",
