@@ -126,7 +126,7 @@ export default function Home() {
                             <motion.div
                                 key={project.id}
                                 // CHANGED: Reduced blur to 0.5px and increased opacity to 30% for better legibility
-                                className={`grid grid-cols-12 gap-4 py-4 border-b border-industrial-ink/10 cursor-pointer group relative items-center transition-all duration-300 ${
+                                className={`hover-target grid grid-cols-12 gap-4 py-4 border-b border-industrial-ink/10 cursor-pointer group relative items-center transition-all duration-300 ${
                                     isDimmed
                                         ? "opacity-30 blur-[0.5px]"
                                         : "opacity-100"

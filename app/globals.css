@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ... your existing styles ... */
+
+/* HIDE DEFAULT CURSOR */
+body,
+a,
+button,
+[role="button"] {
+    cursor: none !important;
+}
+
+/* SHOW CUSTOM CURSOR ON INTERACTIVE ELEMENTS */
+.hover-target,
+a,
+button {
+    cursor: none;
+}
+
+/* Ensure the custom cursor doesn't block clicks */
+.pointer-events-none {
+    pointer-events: none;
+}

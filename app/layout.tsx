@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, JetBrains_Mono } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
+import Cursor from "@/components/Cursor";
 import "./globals.css";
 
 const serifFont = DM_Serif_Display({
@@ -36,9 +37,12 @@ export default function RootLayout({
                         backgroundImage:
                             "radial-gradient(#1A1A1A 1px, transparent 1px)",
                         backgroundSize: "24px 24px",
-                        opacity: 0.15, // CHANGED: Bumped up from 0.08 to 0.15 for better visibility
+                        opacity: 0.15,
                     }}
                 />
+
+                {/* CUSTOM CURSOR */}
+                <Cursor />
 
                 <div className="flex min-h-screen">
                     <Sidebar />
