@@ -7,6 +7,9 @@ import { useStore } from "@/store/useStore";
 export default function Intro() {
     const { introFinished, setIntroFinished } = useStore();
 
+    // Detect if user is in mobile
+    const [isMobile, setIsMobile] = useState(false);
+
     // STARTUP STATE:
     // false = Only Loader (Center)
     // true = Loader moves up, Text appears
@@ -73,9 +76,31 @@ export default function Intro() {
                 runSequence();
             }
         };
+
+        const handleClick = () => {
+            if (started && stage === 0 && isMobile) {
+                runSequence();
+            }
+        };
+
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [started, stage, runSequence]);
+        window.addEventListener("click", handleClick);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener("click", handleClick);
+        };
+    }, [started, stage, runSequence, isMobile]);
+
+    // Mobile responsiveness
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     return (
         <AnimatePresence>
@@ -157,7 +182,9 @@ export default function Intro() {
                                 }}
                                 className="font-mono text-[10px] text-industrial-dim tracking-[0.2em] uppercase absolute -bottom-12"
                             >
-                                Press [Enter] to Wake Up
+                                {isMobile
+                                    ? "Tap to Wake Up"
+                                    : "Press [Enter] to Wake Up"}
                             </motion.p>
                         </motion.div>
 

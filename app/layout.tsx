@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, JetBrains_Mono } from "next/font/google";
+import MobileMenu from "@/components/MobileMenu";
 import Sidebar from "@/components/Sidebar";
 import Cursor from "@/components/Cursor";
 import "./globals.css";
@@ -40,6 +41,9 @@ export default function RootLayout({
                         opacity: 0.15,
                     }}
                 />
+
+                {/* MOBILE MENU */}
+                <MobileMenu />
 
                 {/* CUSTOM CURSOR */}
                 <Cursor />
