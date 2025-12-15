@@ -143,7 +143,11 @@ export default function Home() {
                                 <AnimatePresence>
                                     {isHovered && (
                                         <motion.div
-                                            className="hidden lg:block absolute left-[85%] top-0 w-72 p-4 bg-white border border-industrial-ink/10 shadow-xl z-20 backdrop-blur-sm"
+                                            className="hidden lg:block absolute top-0 w-72 p-4 bg-white border border-industrial-ink/10 shadow-xl z-20 backdrop-blur-sm"
+                                            style={{
+                                                left: "65%",
+                                                marginLeft: "1rem",
+                                            }}
                                             initial={{
                                                 opacity: 0,
                                                 x: -10,
