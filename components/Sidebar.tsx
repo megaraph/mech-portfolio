@@ -2,16 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useStore } from "@/store/useStore";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Sidebar() {
     const pathname = usePathname();
+    const router = useRouter();
     const { introFinished, resetIntro } = useStore();
 
     const handleReplay = () => {
         sessionStorage.removeItem("hasVisited");
         resetIntro();
+        router.push("/");
     };
 
     return (
