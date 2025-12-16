@@ -354,7 +354,7 @@ export default function WorksDetailPage() {
                     project.images &&
                     project.images[selectedImage] && (
                         <motion.div
-                            className="fixed inset-0 bg-industrial-ink/95 z-50 flex items-center justify-center p-8"
+                            className="fixed inset-0 md:left-[300px] bg-industrial-ink/95 z-50 flex items-center justify-center p-8"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
