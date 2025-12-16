@@ -31,6 +31,19 @@ export interface ProjectData {
     images?: ProjectImage[];
     failures?: number[];
     failureNotes?: string;
+    impactMetrics?: {
+        label: string;
+        before: string;
+        after: string;
+        improvement: string;
+    }[];
+    beforeAfter?: {
+        id: number;
+        beforeCaption: string;
+        afterCaption: string;
+        beforeEmoji: string; // Use emoji as placeholder, or image path later
+        afterEmoji: string;
+    }[];
 }
 
 export const projectsData: ProjectData[] = [
@@ -106,6 +119,23 @@ export const projectsData: ProjectData[] = [
         failures: [1, 2, 3],
         failureNotes:
             "Early prototypes exhibited excessive gear wobble due to undersized bearing races. Tolerance stacking required three iterations to achieve target backlash.",
+        impactMetrics: [
+            {
+                label: "Cost Efficiency",
+                before: "$200",
+                after: "$12",
+                improvement: "94% savings",
+            },
+        ],
+        beforeAfter: [
+            {
+                id: 1,
+                beforeCaption: "Initial hand sketch",
+                afterCaption: "Final CAD model",
+                beforeEmoji: "✏️",
+                afterEmoji: "📐",
+            },
+        ],
     },
     {
         id: "002",
@@ -155,6 +185,15 @@ export const projectsData: ProjectData[] = [
                 caption: "Cam mechanism detail",
                 type: "detail",
                 emoji: "🔍",
+            },
+        ],
+        beforeAfter: [
+            {
+                id: 1,
+                beforeCaption: "Disassembled regulator",
+                afterCaption: "Complete CAD model",
+                beforeEmoji: "🔧",
+                afterEmoji: "📐",
             },
         ],
     },

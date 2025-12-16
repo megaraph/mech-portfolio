@@ -16,7 +16,22 @@ export default function WorksDetailPage() {
     const otherProjects = projectsData.filter((p) => p.id !== projectId);
 
     const [scrollProgress, setScrollProgress] = useState(0);
-    const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+    type SelectedImageType =
+        | number
+        | {
+              type: "before" | "after";
+              data: {
+                  id: number;
+                  beforeCaption: string;
+                  afterCaption: string;
+                  beforeEmoji: string;
+                  afterEmoji: string;
+              };
+              index: number;
+          }
+        | null;
+    const [selectedImage, setSelectedImage] = useState<SelectedImageType>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -174,6 +189,73 @@ export default function WorksDetailPage() {
                         </div>
                     )}
 
+                    {/* Impact Metrics Section */}
+                    {project.impactMetrics &&
+                        project.impactMetrics.length > 0 && (
+                            <div className="mb-8 pb-8 border-b border-industrial-ink/10">
+                                <h3 className="text-[10px] uppercase tracking-widest text-industrial-orange mb-6">
+                                    Impact & Results
+                                </h3>
+
+                                <div className="space-y-6">
+                                    {project.impactMetrics.map(
+                                        (metric, index) => (
+                                            <div
+                                                key={index}
+                                                className="grid grid-cols-[1fr,auto,1fr,auto] gap-4 items-center"
+                                            >
+                                                <div className="text-right">
+                                                    <div className="font-mono text-[9px] text-industrial-dim uppercase mb-1">
+                                                        Before
+                                                    </div>
+                                                    <div className="font-mono text-xl text-industrial-ink/60">
+                                                        {metric.before}
+                                                    </div>
+                                                </div>
+
+                                                <svg
+                                                    width="20"
+                                                    height="20"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    className="text-industrial-orange"
+                                                >
+                                                    <path
+                                                        d="M5 12h14m-7-7l7 7-7 7"
+                                                        stroke="currentColor"
+                                                        strokeWidth="2"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                    />
+                                                </svg>
+
+                                                <div className="text-left">
+                                                    <div className="font-mono text-[9px] text-industrial-dim uppercase mb-1">
+                                                        After
+                                                    </div>
+                                                    <div className="font-mono text-xl font-bold text-industrial-orange">
+                                                        {metric.after}
+                                                    </div>
+                                                </div>
+
+                                                <div className="bg-industrial-orange/10 px-3 py-1 rounded">
+                                                    <div className="font-mono text-[9px] font-bold text-industrial-orange whitespace-nowrap">
+                                                        {metric.improvement}
+                                                    </div>
+                                                </div>
+
+                                                <div className="col-span-4 text-center mt-2">
+                                                    <span className="font-mono text-[9px] uppercase tracking-wider text-industrial-dim">
+                                                        {metric.label}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </div>
+                        )}
+
                     {/* Download Button */}
                     <button className="hover-target w-full flex items-center justify-between border border-industrial-ink/20 px-4 py-3 text-xs uppercase hover:bg-industrial-orange hover:text-white hover:border-industrial-orange transition-all group">
                         <span>Download Spec Sheet</span>
@@ -305,6 +387,146 @@ export default function WorksDetailPage() {
                         </div>
                     )}
 
+                    {/* Before/After Comparison Section */}
+                    {project.beforeAfter && project.beforeAfter.length > 0 && (
+                        <div className="mt-16 pt-12 border-t border-industrial-ink/10">
+                            <h3 className="text-[10px] uppercase tracking-widest text-industrial-orange mb-6">
+                                Before / After Comparison
+                            </h3>
+
+                            <div className="space-y-12">
+                                {project.beforeAfter.map(
+                                    (comparison, index) => (
+                                        <motion.div
+                                            key={comparison.id}
+                                            className="grid md:grid-cols-2 gap-6"
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{
+                                                duration: 0.6,
+                                                delay: index * 0.1,
+                                            }}
+                                        >
+                                            {/* Before */}
+                                            <div
+                                                className="hover-target group cursor-pointer"
+                                                onClick={() =>
+                                                    setSelectedImage({
+                                                        type: "before",
+                                                        data: comparison,
+                                                        index: index,
+                                                    })
+                                                }
+                                            >
+                                                <div className="aspect-[4/3] bg-gradient-to-br from-industrial-ink/5 to-industrial-ink/10 rounded flex items-center justify-center overflow-hidden relative group-hover:from-industrial-ink/10 group-hover:to-industrial-ink/15 transition-all">
+                                                    <div className="text-6xl">
+                                                        {comparison.beforeEmoji}
+                                                    </div>
+                                                    <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                                        <svg
+                                                            width="32"
+                                                            height="32"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            className="text-industrial-orange"
+                                                        >
+                                                            <circle
+                                                                cx="11"
+                                                                cy="11"
+                                                                r="8"
+                                                                stroke="currentColor"
+                                                                strokeWidth="2"
+                                                            />
+                                                            <path
+                                                                d="M21 21l-4.35-4.35"
+                                                                stroke="currentColor"
+                                                                strokeWidth="2"
+                                                                strokeLinecap="round"
+                                                            />
+                                                            <path
+                                                                d="M11 8v6m-3-3h6"
+                                                                stroke="currentColor"
+                                                                strokeWidth="2"
+                                                                strokeLinecap="round"
+                                                            />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div className="mt-3">
+                                                    <span className="font-mono text-[10px] uppercase tracking-wider text-industrial-dim block mb-1">
+                                                        Before
+                                                    </span>
+                                                    <p className="font-mono text-xs text-industrial-ink/80">
+                                                        {
+                                                            comparison.beforeCaption
+                                                        }
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            {/* After */}
+                                            <div
+                                                className="hover-target group cursor-pointer"
+                                                onClick={() =>
+                                                    setSelectedImage({
+                                                        type: "after",
+                                                        data: comparison,
+                                                        index: index,
+                                                    })
+                                                }
+                                            >
+                                                <div className="aspect-[4/3] bg-gradient-to-br from-industrial-orange/5 to-industrial-orange/10 rounded flex items-center justify-center overflow-hidden relative group-hover:from-industrial-orange/10 group-hover:to-industrial-orange/15 transition-all">
+                                                    <div className="text-6xl">
+                                                        {comparison.afterEmoji}
+                                                    </div>
+                                                    <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                                        <svg
+                                                            width="32"
+                                                            height="32"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            className="text-industrial-orange"
+                                                        >
+                                                            <circle
+                                                                cx="11"
+                                                                cy="11"
+                                                                r="8"
+                                                                stroke="currentColor"
+                                                                strokeWidth="2"
+                                                            />
+                                                            <path
+                                                                d="M21 21l-4.35-4.35"
+                                                                stroke="currentColor"
+                                                                strokeWidth="2"
+                                                                strokeLinecap="round"
+                                                            />
+                                                            <path
+                                                                d="M11 8v6m-3-3h6"
+                                                                stroke="currentColor"
+                                                                strokeWidth="2"
+                                                                strokeLinecap="round"
+                                                            />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div className="mt-3">
+                                                    <span className="font-mono text-[10px] uppercase tracking-wider text-industrial-orange block mb-1">
+                                                        After
+                                                    </span>
+                                                    <p className="font-mono text-xs text-industrial-ink/80">
+                                                        {
+                                                            comparison.afterCaption
+                                                        }
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    )
+                                )}
+                            </div>
+                        </div>
+                    )}
+
                     {/* Failure Gallery */}
                     {project.failures && project.failures.length > 0 && (
                         <div className="mt-16 pt-12 border-t border-industrial-ink/10">
@@ -350,40 +572,85 @@ export default function WorksDetailPage() {
 
             {/* Image Lightbox */}
             <AnimatePresence>
-                {selectedImage !== null &&
-                    project.images &&
-                    project.images[selectedImage] && (
-                        <motion.div
-                            className="fixed inset-0 md:left-[300px] bg-industrial-ink/95 z-50 flex items-center justify-center p-8"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                {selectedImage !== null && (
+                    <motion.div
+                        className="fixed inset-0 md:left-[300px] bg-industrial-ink/95 z-50 flex items-center justify-center p-8"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <button
+                            className="hover-target absolute top-6 right-6 text-white hover:text-industrial-orange transition-colors"
                             onClick={() => setSelectedImage(null)}
                         >
-                            <button
-                                className="hover-target absolute top-6 right-6 text-white hover:text-industrial-orange transition-colors"
-                                onClick={() => setSelectedImage(null)}
-                            >
-                                <X size={32} />
-                            </button>
-                            <motion.div
-                                className="max-w-5xl w-full aspect-video bg-gradient-to-br from-industrial-orange/20 to-industrial-ink/20 rounded flex items-center justify-center"
-                                initial={{ scale: 0.9, y: 20 }}
-                                animate={{ scale: 1, y: 0 }}
-                                exit={{ scale: 0.9, y: 20 }}
-                                onClick={(e) => e.stopPropagation()}
-                            >
-                                <div className="text-9xl">
-                                    {project.images[selectedImage].emoji ||
-                                        "🔧"}
-                                </div>
-                            </motion.div>
-                            <p className="absolute bottom-8 text-white/60 text-xs uppercase tracking-wider">
-                                FIG {String(selectedImage).padStart(2, "0")}:{" "}
-                                {project.images[selectedImage]?.caption}
-                            </p>
-                        </motion.div>
-                    )}
+                            <X size={32} />
+                        </button>
+
+                        {/* Regular Image */}
+                        {typeof selectedImage === "number" &&
+                            project.images &&
+                            project.images[selectedImage] && (
+                                <>
+                                    <motion.div
+                                        className="max-w-5xl w-full aspect-video bg-gradient-to-br from-industrial-orange/20 to-industrial-ink/20 rounded flex items-center justify-center"
+                                        initial={{ scale: 0.9, y: 20 }}
+                                        animate={{ scale: 1, y: 0 }}
+                                        exit={{ scale: 0.9, y: 20 }}
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <div className="text-9xl">
+                                            {project.images[selectedImage]
+                                                .emoji || "🔧"}
+                                        </div>
+                                    </motion.div>
+                                    <p className="absolute bottom-8 text-white/60 text-xs uppercase tracking-wider">
+                                        FIG{" "}
+                                        {String(selectedImage).padStart(2, "0")}
+                                        :{" "}
+                                        {project.images[selectedImage]?.caption}
+                                    </p>
+                                </>
+                            )}
+
+                        {/* Before/After Image */}
+                        {typeof selectedImage === "object" &&
+                            selectedImage.data && (
+                                <>
+                                    <motion.div
+                                        className="max-w-5xl w-full aspect-video bg-gradient-to-br from-industrial-orange/20 to-industrial-ink/20 rounded flex items-center justify-center"
+                                        initial={{ scale: 0.9, y: 20 }}
+                                        animate={{ scale: 1, y: 0 }}
+                                        exit={{ scale: 0.9, y: 20 }}
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <div className="text-9xl">
+                                            {selectedImage.type === "before"
+                                                ? selectedImage.data.beforeEmoji
+                                                : selectedImage.data.afterEmoji}
+                                        </div>
+                                    </motion.div>
+                                    <p className="absolute bottom-8 text-white/60 text-xs uppercase tracking-wider text-center max-w-2xl">
+                                        <span
+                                            className={
+                                                selectedImage.type === "before"
+                                                    ? "text-white/40"
+                                                    : "text-industrial-orange"
+                                            }
+                                        >
+                                            {selectedImage.type === "before"
+                                                ? "BEFORE"
+                                                : "AFTER"}
+                                        </span>
+                                        {" — "}
+                                        {selectedImage.type === "before"
+                                            ? selectedImage.data.beforeCaption
+                                            : selectedImage.data.afterCaption}
+                                    </p>
+                                </>
+                            )}
+                    </motion.div>
+                )}
             </AnimatePresence>
         </div>
     );
