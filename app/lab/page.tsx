@@ -177,7 +177,7 @@ export default function LabPage() {
                         className="w-full h-full object-cover"
                         poster="/lab-poster.png"
                     >
-                        <source src="/lab-teaser.mp4" type="video/mp4" />
+                        <source src="/lab-teaser-web.mp4" type="video/mp4" />
                     </video>
 
                     {/* Dark overlay for text readability */}
