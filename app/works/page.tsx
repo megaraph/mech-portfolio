@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projectsData } from "@/store/projectsData";
+import Cipher from "@/components/Cipher";
 
 export default function WorksPage() {
     const router = useRouter();
@@ -79,7 +80,7 @@ export default function WorksPage() {
                             onClick={() => router.push(`/works/${project.id}`)}
                         >
                             <div className="col-span-1 font-mono text-sm text-industrial-dim group-hover:text-industrial-orange transition-colors">
-                                {project.id}
+                                <Cipher text={project.id} trigger={isHovered} />
                             </div>
                             <div className="col-span-4 md:col-span-4 font-mono text-sm font-medium text-industrial-ink group-hover:text-industrial-orange transition-colors">
                                 {project.name}

@@ -1,6 +1,7 @@
 "use client";
 
 import Intro from "@/components/Intro";
+import Cipher from "@/components/Cipher";
 import { useStore } from "@/store/useStore";
 import { projectsData } from "@/store/projectsData";
 import { useState, useEffect } from "react";
@@ -188,45 +189,5 @@ export default function Home() {
                 </div>
             </div>
         </>
-    );
-}
-
-function Cipher({ text, trigger }: { text: string; trigger: boolean }) {
-    const [display, setDisplay] = useState(text);
-
-    useEffect(() => {
-        // Only run the animation logic if triggered
-        if (trigger) {
-            const chars = "0123456789";
-            let iterations = 0;
-
-            const interval = setInterval(() => {
-                setDisplay(
-                    text
-                        .split("")
-                        .map((char, index) => {
-                            if (index < iterations) return text[index];
-                            return chars[Math.floor(Math.random() * 10)];
-                        })
-                        .join("")
-                );
-
-                if (iterations >= text.length) clearInterval(interval);
-                iterations += 1 / 3;
-            }, 30);
-
-            return () => {
-                clearInterval(interval);
-            };
-        }
-    }, [trigger, text]);
-
-    return (
-        <span className="inline-block tabular-nums">
-            {/* FIX: If not triggered, just render the original text directly.
-         This bypasses the need to set state inside useEffect.
-      */}
-            {trigger ? display : text}
-        </span>
     );
 }
