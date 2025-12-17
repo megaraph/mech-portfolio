@@ -37,22 +37,23 @@ export default function AboutPage() {
                         Raphael C. Murillo
                     </h1>
                     <p className="font-mono text-sm md:text-base text-industrial-dim uppercase tracking-wider mb-8">
-                        MECHANICAL ENGINEER // DESIGNER // BUILDER
+                        MECHANICAL ENGINEERING // DESIGNING // BUILDING
                     </p>
 
                     <div className="space-y-2 font-mono text-xs text-industrial-dim mb-8">
-                        <p>Currently: 3rd Year @ DLSU Manila</p>
+                        <p>Currently: 2nd Year @ DLSU Manila</p>
                         <p className="text-industrial-orange">
-                            Status: Available for Internships [Q2 2025]
+                            Status: Available for Internships
                         </p>
                     </div>
 
                     <div className="max-w-3xl">
                         <p className="font-mono text-base md:text-lg leading-relaxed text-industrial-ink/90">
-                            I design systems that work in the real world, not
-                            just on paper. From CAD to CNC, I bridge digital
-                            precision with physical fabrication. I believe great
-                            engineering is 10% inspiration, 90% iteration.
+                            I design systems that are built, not just imagined.
+                            Working from CAD and sketches to machine, I aim to
+                            bridge imagination and physical fabrication. For me,
+                            engineering is a discipline of iteration, not just a
+                            moment of inspiration.
                         </p>
                     </div>
                 </motion.section>
@@ -65,7 +66,7 @@ export default function AboutPage() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     <h2 className="font-mono text-xs uppercase tracking-widest text-industrial-orange mb-8">
-                        Manufacturing History
+                        Personal History
                     </h2>
 
                     <div className="space-y-6">

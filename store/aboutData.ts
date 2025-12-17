@@ -25,22 +25,74 @@ interface Stat {
 }
 
 export const timelineData: TimelineEntry[] = [
+    // EDUCATION
+    {
+        id: "edu-000",
+        type: "education",
+        title: "Senior High School - STEM Strand",
+        organization: "De La Salle University-Integrated School Manila",
+        date: "2022–2024",
+        description:
+            "Silver Academic Awardee, Outstanding Research | Remote Sensing & Agriculture",
+        current: false,
+    },
     {
         id: "edu-001",
         type: "education",
         title: "BS Mechanical Engineering",
         organization: "De La Salle University Manila",
-        date: "2023–2027",
-        description: "Focus: Robotics, Manufacturing, Design for Manufacturing",
+        date: "2024–2028",
+        description: "Specialization in Mechatronics",
         current: true,
+    },
+
+    // EXPERIENCES
+    {
+        id: "exp-000",
+        type: "experience",
+        title: "Electrical Committee - Trainee",
+        organization: "DLSU Eco Car Team",
+        date: "2024-2025",
+        description:
+            "Assisted in wiring and electrical system setup for DLSU's Eco Car. Designed an RFID system for organization-wide attendance management.",
+    },
+    {
+        id: "exp-001",
+        type: "experience",
+        title: "Junior Associate",
+        organization: "DLSU Archers Consulting Group",
+        date: "2024-2025",
+        description:
+            "Participated and won in consulting case competitions focused on business strategy, operations, and marketing improvement.",
+    },
+    {
+        id: "exp-002",
+        type: "experience",
+        title: "Externals Officer",
+        organization: "Society of Manufacturing Engineers - DLSU",
+        date: "2024-2025",
+        description:
+            "Assisted in contacting external organizational partners for events and sponsorships.",
+    },
+
+    // CERTIFICATIONS
+    {
+        id: "cert-000",
+        type: "certification",
+        title: "CS50x",
+        organization: "Harvard University",
+        date: "2021",
+        description:
+            "Introduction to computer science. Learned foundational programming concepts in C, Python, SQL, and JavaScript. https://certificates.cs50.io/1488bde8-f380-4a61-8906-fab47b1e63d4.pdf?size=letter",
     },
     {
         id: "cert-001",
         type: "certification",
-        title: "SolidWorks Associate Certification",
-        organization: "Dassault Systèmes",
-        date: "2024",
-        description: "CSWA - Mechanical Design",
+        title: "Fundamentals of Deep Learning",
+        organization: "NVIDIA",
+        date: "2025",
+        description:
+            "Introduction to deep learning concepts and applications using NVIDIA's deep learning frameworks. https://learn.nvidia.com/certificates?id=OLF_HDWxQQCbM42YHD4drQ ",
     },
     // Add experience entries here as you get them
 ];
@@ -49,29 +101,34 @@ export const skills: Skill[] = [
     // Software
     { name: "SolidWorks", category: "software" },
     { name: "Fusion 360", category: "software" },
-    { name: "ANSYS", category: "software" },
+    { name: "OnShape", category: "software" },
+    { name: "Blender", category: "software" },
+    { name: "SimScale", category: "software" },
     { name: "MATLAB", category: "software" },
     { name: "Python", category: "software" },
+    { name: "C/C++", category: "software" },
+    { name: "SQL", category: "software" },
     { name: "React", category: "software" },
     { name: "Figma", category: "software" },
 
     // Fabrication
-    { name: "3D Printing (FDM/SLA)", category: "fabrication" },
+    { name: "3D Printing (FDM)", category: "fabrication" },
     { name: "CNC Milling", category: "fabrication" },
     { name: "Laser Cutting", category: "fabrication" },
     { name: "Manual Machining", category: "fabrication" },
+    { name: "SMAW", category: "fabrication" },
 
     // Specialties
-    { name: "Mechanism Design", category: "specialty" },
+    { name: "Mechatronics", category: "specialty" },
     { name: "FEA/CFD", category: "specialty" },
     { name: "Rapid Prototyping", category: "specialty" },
-    { name: "DFM", category: "specialty" },
+    { name: "DFAM", category: "specialty" },
     { name: "CAM", category: "specialty" },
 
     // Soft Skills
     { name: "Technical Writing", category: "soft" },
     { name: "Project Management", category: "soft" },
-    { name: "Teaching/Mentoring", category: "soft" },
+    { name: "Presenting/Public Speaking", category: "soft" },
 ];
 
 export const principles: Principle[] = [
@@ -104,8 +161,8 @@ export const principles: Principle[] = [
 export const stats: Stat[] = [
     { value: "247", label: "Prototypes Tested" },
     { value: "12", label: "Failed Prints This Month" },
-    { value: "∞", label: "Cups of Coffee" },
+    { value: "∞", label: "Glasses of Oat Milk" },
     { value: "5", label: "Programming Languages" },
-    { value: "3", label: "Countries Visited" },
+    { value: "8", label: "Countries Visited" },
     { value: "1", label: "Passion for Making Things Work" },
 ];
