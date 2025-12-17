@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Download, ZoomIn } from "lucide-react";
@@ -25,8 +26,8 @@ export default function WorksDetailPage() {
                   id: number;
                   beforeCaption: string;
                   afterCaption: string;
-                  beforeEmoji: string;
-                  afterEmoji: string;
+                  beforeSrc: string;
+                  afterSrc: string;
               };
               index: number;
           }
@@ -336,11 +337,15 @@ export default function WorksDetailPage() {
                             transition={{ duration: 0.6 }}
                             onClick={() => setSelectedImage(0)}
                         >
-                            <div className="aspect-[16/10] bg-gradient-to-br from-industrial-ink/5 to-industrial-orange/10 rounded flex items-center justify-center overflow-hidden relative">
-                                <div className="text-6xl">
-                                    {project.images[0].emoji || "🔧"}
-                                </div>
-                                <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div className="aspect-[16/10] bg-industrial-ink/5 rounded flex items-center justify-center overflow-hidden relative">
+                                <Image
+                                    src={project.images[0].src ?? ""}
+                                    alt={project.images[0].caption}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+
+                                <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 z-10">
                                     <ZoomIn
                                         size={32}
                                         className="text-industrial-orange"
@@ -375,12 +380,24 @@ export default function WorksDetailPage() {
                                                 : index % 3 === 1
                                                 ? "aspect-[4/3]"
                                                 : "aspect-square"
-                                        } bg-gradient-to-br from-industrial-ink/5 to-industrial-orange/10 rounded flex items-center justify-center overflow-hidden relative`}
+                                        } bg-industrial-ink/5 rounded flex items-center justify-center overflow-hidden relative`}
                                     >
-                                        <div className="text-5xl">
-                                            {img.emoji || "📐"}
-                                        </div>
-                                        <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                        <Image
+                                            src={img.src ?? ""}
+                                            alt={img.caption}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+
+                                        {img.type && (
+                                            <div className="absolute top-3 left-3 z-20">
+                                                <span className="bg-industrial-orange text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">
+                                                    {img.type}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 z-10">
                                             <ZoomIn
                                                 size={28}
                                                 className="text-industrial-orange"
@@ -427,11 +444,18 @@ export default function WorksDetailPage() {
                                                     })
                                                 }
                                             >
-                                                <div className="aspect-[4/3] bg-gradient-to-br from-industrial-ink/5 to-industrial-ink/10 rounded flex items-center justify-center overflow-hidden relative group-hover:from-industrial-ink/10 group-hover:to-industrial-ink/15 transition-all">
-                                                    <div className="text-6xl">
-                                                        {comparison.beforeEmoji}
-                                                    </div>
-                                                    <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                                <div className="aspect-[4/3] bg-industrial-ink/5 rounded flex items-center justify-center overflow-hidden relative">
+                                                    <Image
+                                                        src={
+                                                            comparison.beforeSrc
+                                                        }
+                                                        alt={
+                                                            comparison.beforeCaption
+                                                        }
+                                                        fill
+                                                        className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                                    />
+                                                    <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 z-10">
                                                         <svg
                                                             width="32"
                                                             height="32"
@@ -484,10 +508,17 @@ export default function WorksDetailPage() {
                                                     })
                                                 }
                                             >
-                                                <div className="aspect-[4/3] bg-gradient-to-br from-industrial-orange/5 to-industrial-orange/10 rounded flex items-center justify-center overflow-hidden relative group-hover:from-industrial-orange/10 group-hover:to-industrial-orange/15 transition-all">
-                                                    <div className="text-6xl">
-                                                        {comparison.afterEmoji}
-                                                    </div>
+                                                <div className="aspect-[4/3] bg-industrial-orange/5 rounded flex items-center justify-center overflow-hidden relative">
+                                                    <Image
+                                                        src={
+                                                            comparison.afterSrc
+                                                        }
+                                                        alt={
+                                                            comparison.afterCaption
+                                                        }
+                                                        fill
+                                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    />
                                                     <div className="absolute inset-0 bg-industrial-ink/0 group-hover:bg-industrial-ink/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                                                         <svg
                                                             width="32"
@@ -602,16 +633,24 @@ export default function WorksDetailPage() {
                             project.images[selectedImage] && (
                                 <>
                                     <motion.div
-                                        className="max-w-5xl w-full aspect-video bg-gradient-to-br from-industrial-orange/20 to-industrial-ink/20 rounded flex items-center justify-center"
+                                        className="max-w-5xl w-full aspect-video bg-industrial-ink/20 rounded flex items-center justify-center relative overflow-hidden"
                                         initial={{ scale: 0.9, y: 20 }}
                                         animate={{ scale: 1, y: 0 }}
                                         exit={{ scale: 0.9, y: 20 }}
                                         onClick={(e) => e.stopPropagation()}
                                     >
-                                        <div className="text-9xl">
-                                            {project.images[selectedImage]
-                                                .emoji || "🔧"}
-                                        </div>
+                                        <Image
+                                            src={
+                                                project.images[selectedImage]
+                                                    .src ?? ""
+                                            }
+                                            alt={
+                                                project.images[selectedImage]
+                                                    .caption
+                                            }
+                                            fill
+                                            className="object-contain"
+                                        />
                                     </motion.div>
                                     <p className="absolute bottom-8 text-white/60 text-xs uppercase tracking-wider">
                                         FIG{" "}
@@ -627,17 +666,25 @@ export default function WorksDetailPage() {
                             selectedImage.data && (
                                 <>
                                     <motion.div
-                                        className="max-w-5xl w-full aspect-video bg-gradient-to-br from-industrial-orange/20 to-industrial-ink/20 rounded flex items-center justify-center"
+                                        className="max-w-5xl w-full aspect-video bg-industrial-ink/20 rounded flex items-center justify-center relative overflow-hidden"
                                         initial={{ scale: 0.9, y: 20 }}
                                         animate={{ scale: 1, y: 0 }}
                                         exit={{ scale: 0.9, y: 20 }}
                                         onClick={(e) => e.stopPropagation()}
                                     >
-                                        <div className="text-9xl">
-                                            {selectedImage.type === "before"
-                                                ? selectedImage.data.beforeEmoji
-                                                : selectedImage.data.afterEmoji}
-                                        </div>
+                                        {/* LIGHTBOX COMPARISON IMAGE */}
+                                        <Image
+                                            src={
+                                                selectedImage.type === "before"
+                                                    ? selectedImage.data
+                                                          .beforeSrc
+                                                    : selectedImage.data
+                                                          .afterSrc
+                                            }
+                                            alt="Comparison"
+                                            fill
+                                            className="object-contain"
+                                        />
                                     </motion.div>
                                     <p className="absolute bottom-8 text-white/60 text-xs uppercase tracking-wider text-center max-w-2xl">
                                         <span
