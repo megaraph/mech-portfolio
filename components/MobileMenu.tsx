@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useStore } from "@/store/useStore";
+import Identity from "@/components/Identity"; // Import the new component
 
 export default function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -69,15 +70,7 @@ export default function MobileMenu() {
                         >
                             {/* Header */}
                             <div className="mb-8 pt-12">
-                                <h2 className="font-serif text-2xl mb-1">
-                                    Raphael C. Murillo
-                                </h2>
-                                <div className="mt-4 flex items-center gap-2">
-                                    <span className="h-2 w-2 bg-industrial-orange rounded-full animate-pulse"></span>
-                                    <p className="font-mono text-[10px] text-industrial-dim uppercase tracking-wider">
-                                        MECH. ENGINEERING // DLSU
-                                    </p>
-                                </div>
+                                <Identity />
                             </div>
 
                             {/* Navigation */}
