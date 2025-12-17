@@ -121,13 +121,22 @@ export default function WorksDetailPage() {
                         />
                     </div>
 
-                    {/* Problem Statement */}
+                    {/* Tagline (if exists) */}
+                    {project.tagline && (
+                        <div className="mb-8 pb-8 border-b border-industrial-ink/10">
+                            <p className="text-base md:text-sm leading-relaxed text-industrial-orange italic">
+                                {project.tagline}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* Background Statement */}
                     <div className="mb-6">
                         <h3 className="text-[10px] uppercase tracking-widest text-industrial-orange mb-3">
                             Problem Statement
                         </h3>
                         <p className="text-sm leading-relaxed text-industrial-ink/80">
-                            {project.problem}
+                            {project.background}
                         </p>
                     </div>
 
@@ -137,7 +146,7 @@ export default function WorksDetailPage() {
                             Solution
                         </h3>
                         <p className="text-sm leading-relaxed text-industrial-ink/80">
-                            {project.solution}
+                            {project.execution}
                         </p>
                     </div>
 

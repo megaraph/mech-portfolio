@@ -23,8 +23,9 @@ export interface ProjectData {
     category: string;
     skills: string;
     description: string;
-    problem: string;
-    solution: string;
+    tagline?: string;
+    background: string;
+    execution: string;
     emoji?: string;
     metrics?: ProjectMetric[];
     highlights?: string[];
@@ -61,9 +62,10 @@ export const projectsData: ProjectData[] = [
         description:
             "High-torque robotic actuator with 20:1 reduction ratio. 3D printed ABS.",
         emoji: "🔧",
-        problem:
+        tagline: "Achieved 20:1 torque multiplication at 94% cost savings",
+        background:
             "Robotic applications require high-torque, low-backlash actuators in compact form factors. Commercial cycloidal drives are prohibitively expensive for student projects.",
-        solution:
+        execution:
             "Designed and fabricated a 3D-printable cycloidal drive with 20:1 reduction ratio achieving <0.5° backlash in a 60mm diameter envelope using FDM-printed ABS.",
         metrics: [
             { label: "Reduction Ratio", value: "20:1" },
@@ -152,9 +154,9 @@ export const projectsData: ProjectData[] = [
         description:
             "Mechanical iris with 12 overlapping blades. Designed for flow control experiments.",
         emoji: "🔵",
-        problem:
+        background:
             "Variable aperture mechanisms for fluid dynamics research require precise, repeatable control with minimal friction.",
-        solution:
+        execution:
             "Developed a 12-blade iris mechanism with cam-driven actuation, achieving 0-90% aperture range with <2% repeatability error.",
         metrics: [
             { label: "Blade Count", value: "12" },
@@ -211,9 +213,9 @@ export const projectsData: ProjectData[] = [
         description:
             "CFD analysis of bell nozzle efficiency at varying altitudes using MATLAB.",
         emoji: "🟡",
-        problem:
+        background:
             "Optimizing rocket nozzle geometry for multi-altitude performance requires extensive computational analysis.",
-        solution:
+        execution:
             "Developed MATLAB-based CFD simulation suite analyzing bell nozzle efficiency across 0-30km altitude range.",
         metrics: [
             { label: "Altitude Range", value: "0-30km" },
@@ -255,9 +257,9 @@ export const projectsData: ProjectData[] = [
         description:
             "Monolithic print-in-place mechanism utilizing flexure hinges for grip.",
         emoji: "🟢",
-        problem:
+        background:
             "Traditional clamps require assembly and have friction losses. Compliant mechanisms eliminate these issues.",
-        solution:
+        execution:
             "Designed monolithic flexure-based clamp achieving 50N grip force with single-piece 3D printable design.",
         metrics: [
             { label: "Grip Force", value: "50N" },
