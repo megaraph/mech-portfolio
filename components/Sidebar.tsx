@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/store/useStore";
@@ -30,11 +31,124 @@ export default function Sidebar() {
                 >
                     {/* Top: Identity */}
                     <div>
-                        <h1 className="font-serif text-2xl leading-none text-industrial-ink whitespace-nowrap">
+                        {/* Monogram */}
+                        <div className="mb-6 flex justify-center">
+                            <div className="w-20 h-20 border border-industrial-ink/10 flex items-center justify-center bg-industrial-paper">
+                                <Image
+                                    src="/monogram.png"
+                                    alt="RM Monogram"
+                                    width={64} // 16 * 4 (Tailwind w-16)
+                                    height={64} // 16 * 4 (Tailwind h-16)
+                                    className="object-contain" // You don't strictly need w-16 h-16 here if width/height match, but keeping them is fine for responsiveness
+                                    priority // Optional: Loads this image immediately since it's above the fold
+                                />
+                            </div>
+                        </div>
+
+                        {/* Name */}
+                        <h1 className="font-serif text-2xl leading-none text-industrial-ink mb-4 text-center">
                             Raphael C. Murillo
                         </h1>
-                        <div className="mt-4 flex items-center gap-2">
-                            <span className="h-2 w-2 bg-industrial-orange rounded-full animate-pulse"></span>
+
+                        {/* Credentials with Gear */}
+                        <div className="flex items-center justify-center gap-2">
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                className="text-industrial-orange"
+                                style={{
+                                    animation:
+                                        "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                                }}
+                            >
+                                {/* Center circle */}
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="3"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    fill="none"
+                                />
+
+                                {/* 4 main spokes (cardinal directions) */}
+                                <line
+                                    x1="12"
+                                    y1="2"
+                                    x2="12"
+                                    y2="6"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <line
+                                    x1="12"
+                                    y1="18"
+                                    x2="12"
+                                    y2="22"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <line
+                                    x1="2"
+                                    y1="12"
+                                    x2="6"
+                                    y2="12"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <line
+                                    x1="18"
+                                    y1="12"
+                                    x2="22"
+                                    y2="12"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+
+                                {/* 4 diagonal spokes */}
+                                <line
+                                    x1="4.93"
+                                    y1="4.93"
+                                    x2="7.76"
+                                    y2="7.76"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <line
+                                    x1="16.24"
+                                    y1="16.24"
+                                    x2="19.07"
+                                    y2="19.07"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <line
+                                    x1="4.93"
+                                    y1="19.07"
+                                    x2="7.76"
+                                    y2="16.24"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <line
+                                    x1="16.24"
+                                    y1="7.76"
+                                    x2="19.07"
+                                    y2="4.93"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
                             <p className="font-mono text-[10px] tracking-widest text-industrial-dim uppercase">
                                 MECH. ENGINEERING // DLSU
                             </p>
