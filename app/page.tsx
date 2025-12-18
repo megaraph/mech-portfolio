@@ -4,7 +4,7 @@ import Intro from "@/components/Intro";
 import Cipher from "@/components/Cipher";
 import { useStore } from "@/store/useStore";
 import { projectsData } from "@/store/projectsData";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 

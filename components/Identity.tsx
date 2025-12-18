@@ -8,8 +8,8 @@ export default function Identity({ className = "" }: { className?: string }) {
                 <Image
                     src="/monogram-v.png"
                     alt="RM Monogram"
-                    width={64}
-                    height={64}
+                    width={48}
+                    height={48}
                     className="object-contain w-12 h-12"
                     priority
                 />
