@@ -41,13 +41,13 @@ export default function RootLayout({
                         opacity: 0.15,
                     }}
                 />
+                <div className="print:hidden">
+                    {/* MOBILE MENU */}
+                    <MobileMenu />
 
-                {/* MOBILE MENU */}
-                <MobileMenu />
-
-                {/* CUSTOM CURSOR */}
-                <Cursor />
-
+                    {/* CUSTOM CURSOR */}
+                    <Cursor />
+                </div>
                 <div className="flex min-h-screen">
                     <Sidebar />
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Download, ZoomIn } from "lucide-react";
@@ -267,13 +268,17 @@ export default function WorksDetailPage() {
                         )}
 
                     {/* Download Button */}
-                    <button className="hover-target w-full flex items-center justify-between border border-industrial-ink/20 px-4 py-3 text-xs uppercase hover:bg-industrial-orange hover:text-white hover:border-industrial-orange transition-all group">
-                        <span>Download Spec Sheet</span>
+                    <Link
+                        href={`/works/${projectId}/spec`}
+                        target="_blank" // Opens in new tab so they can print without losing place
+                        className="hover-target w-full flex items-center justify-between border border-industrial-ink/20 px-4 py-3 text-xs uppercase hover:bg-industrial-orange hover:text-white hover:border-industrial-orange transition-all group"
+                    >
+                        <span>View Spec Sheet</span>
                         <Download
                             size={14}
                             className="group-hover:translate-y-0.5 transition-transform"
                         />
-                    </button>
+                    </Link>
 
                     {/* Mini Nav */}
                     <div className="mt-8 pt-6 border-t border-industrial-ink/10">
