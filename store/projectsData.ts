@@ -87,13 +87,13 @@ export const projectsData: ProjectData[] = [
                 id: 2,
                 caption: "Exploded view showing assembly order",
                 type: "exploded",
-                src: "/images/works/001/Exploded.png",
+                src: "/images/works/001/exploded.png",
             },
             {
                 id: 3,
                 caption: "Manufacturing technical drawing (AutoCAD)",
                 type: "detail",
-                src: "/images/works/001/Drawing.png",
+                src: "/images/works/001/drawing.png",
             },
             {
                 id: 4,
@@ -165,25 +165,25 @@ export const projectsData: ProjectData[] = [
                 id: 1,
                 caption: "Test stand render showing motor mounting rails",
                 type: "render",
-                src: "/images/works/002/Hero.png",
+                src: "/images/works/002/hero.png",
             },
             {
                 id: 2,
                 caption: "Exploded view of frame and sensor stack",
                 type: "exploded",
-                src: "/images/works/002/Exploded.png",
+                src: "/images/works/002/exploded.png",
             },
             {
                 id: 3,
                 caption: "Fabrication drawing for welder communication",
                 type: "detail",
-                src: "/images/works/002/Drawing.png",
+                src: "/images/works/002/drawing.png",
             },
             {
                 id: 4,
                 caption: "Physical assembly with blue solid motor installed",
                 type: "photo",
-                src: "/images/works/002/Reference.png",
+                src: "/images/works/002/reference.png",
             },
             // UNCOMMENT THIS WHEN YOU HAVE THE SIMSCALE IMAGE
             // {
