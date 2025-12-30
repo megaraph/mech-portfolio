@@ -128,54 +128,86 @@ export const projectsData: ProjectData[] = [
     },
     {
         id: "002",
-        name: "Iris Aperture Mechanism",
+        name: "Rocket Static Fire Stand",
+        featured: true,
         type: "Physical",
-        role: "Lead Designer",
-        duration: "6 Weeks",
-        tools: "SOLIDWORKS, DFM Analysis",
-        status: "Production Ready",
+        role: "Lead Engineer",
+        duration: "2 Weeks",
+        tools: "Onshape, SimScale, Arduino, Python",
+        status: "Operational",
         year: "2025",
-        category: "CAD / MFG",
-        skills: "DFM / TOLERANCING",
+        category: "AEROSPACE / GSE",
+        skills: "WELDMENTS / FEA / DAQ / PYTHON",
         description:
-            "Mechanical iris with 12 overlapping blades. Designed for flow control experiments.",
-        emoji: "🔵",
+            "Ground support equipment for static firing H-Class solid rocket motors with wireless telemetry.",
+        emoji: "🚀",
+        tagline:
+            "Full-stack propulsion testing: From welded frame to wireless telemetry",
         background:
-            "Variable aperture mechanisms for fluid dynamics research require precise, repeatable control with minimal friction.",
+            "Validating solid rocket motor performance requires a secured ground test platform capable of isolating thrust data from structural vibration while maintaining operator safety distance.",
         execution:
-            "Developed a 12-blade iris mechanism with cam-driven actuation, achieving 0-90% aperture range with <2% repeatability error.",
+            "Designed a welded 6061-T6 aluminum frame optimized for stiffness. Built a custom wireless DAQ system (Arduino/NRF24L01) to stream real-time thrust curves to a Python dashboard from 100m safety range.",
         metrics: [
-            { label: "Blade Count", value: "12" },
-            { label: "Aperture Range", value: "0-90%" },
-            { label: "Repeatability", value: "<2%" },
-            { label: "Material", value: "Aluminum" },
+            { label: "Rated Capacity", value: "200N (20kg)" }, // Limited by Load Cell
+            { label: "Material", value: "6061-T6 Al" },
+            { label: "Sample Rate", value: "80 Hz" }, // Standard for HX711/Arduino
+            { label: "Safety Range", value: "Wireless (100m)" },
+            { label: "Target FOS", value: "> 5.0" }, // Ground Support Equipment Standard
         ],
         highlights: [
-            "Blade overlap optimization for light-tight seal",
-            "Cam profile designed for linear aperture response",
-            "Anodized aluminum for corrosion resistance",
+            "Generated weldment drawings and cut-lists for fabrication communication",
+            "Finite Element Analysis (FEA) to minimize frame harmonic vibration",
+            "Custom Python script for real-time serial plotting and CSV logging",
+            "Wireless safety interlock using NRF24L01 telemetry modules",
         ],
         images: [
             {
                 id: 1,
-                caption: "Fully closed configuration",
+                caption: "Test stand render showing motor mounting rails",
                 type: "render",
-                src: "/images/works/002/drawing.png",
+                src: "/images/works/002/Hero.png",
             },
             {
                 id: 2,
-                caption: "50% aperture state showing blade overlap",
+                caption: "Exploded view of frame and sensor stack",
+                type: "exploded",
+                src: "/images/works/002/Exploded.png",
+            },
+            {
+                id: 3,
+                caption: "Fabrication drawing for welder communication",
                 type: "detail",
-                src: "/images/works/002/final.png",
+                src: "/images/works/002/Drawing.png",
+            },
+            {
+                id: 4,
+                caption: "Physical assembly with blue solid motor installed",
+                type: "photo",
+                src: "/images/works/002/Reference.png",
+            },
+            // UNCOMMENT THIS WHEN YOU HAVE THE SIMSCALE IMAGE
+            // {
+            //     id: 5,
+            //     caption: "FEA Displacement analysis under 200N load",
+            //     type: "graph",
+            //     src: "/images/works/002/fea.png",
+            // },
+        ],
+        impactMetrics: [
+            {
+                label: "Data Safety",
+                before: "Wired",
+                after: "Wireless",
+                improvement: "100m Standoff",
             },
         ],
         beforeAfter: [
             {
                 id: 1,
-                beforeCaption: "Disassembled regulator",
-                afterCaption: "Complete CAD model",
-                beforeSrc: "/images/works/002/drawing.png",
-                afterSrc: "/images/works/002/final.png",
+                beforeCaption: "CAD Design Concept",
+                afterCaption: "Fabricated Assembly",
+                beforeSrc: "/images/works/002/Hero.png",
+                afterSrc: "/images/works/002/Reference.png",
             },
         ],
     },
