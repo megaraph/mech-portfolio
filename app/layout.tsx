@@ -17,7 +17,7 @@ const monoFont = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Raphael Murillo | Mechanical Engineer",
+    title: "Raphael Murillo | Mechanical Engineering Portfolio",
     description: "Mechanical Engineering Portfolio",
     icons: {
         icon: [
@@ -28,6 +28,33 @@ export const metadata: Metadata = {
         apple: "/apple-touch-icon.png",
     },
     manifest: "/site.webmanifest",
+    // Open Graph (Facebook, Messenger, LinkedIn)
+    openGraph: {
+        title: "Raphael Murillo | Mechanical Engineering Portfolio",
+        description:
+            "I design systems that are built, not just imagined. Working from CAD and sketches to machine, I aim to bridge imagination and physical fabrication.",
+        url: "https://www.raphmurillo.com",
+        siteName: "Raphael Murillo",
+        images: [
+            {
+                url: "https://www.raphmurillo.com/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Raph Murillo Portfolio",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+
+    // Twitter Card
+    twitter: {
+        card: "summary_large_image",
+        title: "Raphael Murillo | Mechanical Engineering Portfolio",
+        description:
+            "I design systems that are built, not just imagined. Working from CAD and sketches to machine, I aim to bridge imagination and physical fabrication.",
+        images: ["https://www.raphmurillo.com/og-image.png"],
+    },
 };
 
 export default function RootLayout({
