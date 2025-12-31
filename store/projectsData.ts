@@ -190,7 +190,7 @@ export const projectsData: ProjectData[] = [
                 id: 4,
                 caption: "Physical assembly with blue solid motor installed",
                 type: "photo",
-                src: "/images/works/002/Reference.png",
+                src: "/images/works/002/reference.png",
             },
             {
                 id: 5,
