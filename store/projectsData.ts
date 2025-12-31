@@ -1,7 +1,14 @@
 export interface ProjectImage {
     id: number;
     caption: string;
-    type: "render" | "exploded" | "section view" | "detail" | "photo" | "graph";
+    type:
+        | "render"
+        | "exploded"
+        | "section view"
+        | "detail"
+        | "photo"
+        | "graph"
+        | "analysis";
     src?: string;
 }
 
@@ -142,23 +149,23 @@ export const projectsData: ProjectData[] = [
             "Ground support equipment for static firing H-Class solid rocket motors with wireless telemetry.",
         emoji: "🚀",
         tagline:
-            "Full-stack propulsion testing: From welded frame to wireless telemetry",
+            "Full-stack propulsion testing: From welded stainless frame to wireless telemetry",
         background:
             "Validating solid rocket motor performance requires a secured ground test platform capable of isolating thrust data from structural vibration while maintaining operator safety distance.",
         execution:
-            "Designed a welded 6061-T6 aluminum frame optimized for stiffness. Built a custom wireless DAQ system (Arduino/NRF24L01) to stream real-time thrust curves to a Python dashboard from 100m safety range.",
+            "Designed a welded Stainless Steel 304 frame optimized for stiffness using FEA. Developed a custom wireless DAQ system (Arduino/NRF24L01) to stream real-time thrust curves to a Python dashboard from 100m safety range.",
         metrics: [
-            { label: "Rated Capacity", value: "200N (20kg)" }, // Limited by Load Cell
-            { label: "Material", value: "6061-T6 Al" },
-            { label: "Sample Rate", value: "80 Hz" }, // Standard for HX711/Arduino
-            { label: "Safety Range", value: "Wireless (100m)" },
-            { label: "Target FOS", value: "> 5.0" }, // Ground Support Equipment Standard
+            { label: "Rated Capacity", value: "200N (Limit: Load Cell)" },
+            { label: "Material", value: "Stainless Steel 304" },
+            { label: "Max Stress", value: "67.6 MPa" },
+            { label: "Min F.O.S.", value: "3.00" },
+            { label: "Telemetry", value: "2.4GHz Wireless" },
         ],
         highlights: [
             "Generated weldment drawings and cut-lists for fabrication communication",
-            "Finite Element Analysis (FEA) to minimize frame harmonic vibration",
+            "Finite Element Analysis (FEA) validating frame rigidity (<0.15mm deflection)",
             "Custom Python script for real-time serial plotting and CSV logging",
-            "Wireless safety interlock using NRF24L01 telemetry modules",
+            "Integrated MCXK-E Load Cell with HX711 amplification circuit",
         ],
         images: [
             {
@@ -183,22 +190,29 @@ export const projectsData: ProjectData[] = [
                 id: 4,
                 caption: "Physical assembly with blue solid motor installed",
                 type: "photo",
-                src: "/images/works/002/reference.png",
+                src: "/images/works/002/Reference.png",
             },
-            // UNCOMMENT THIS WHEN YOU HAVE THE SIMSCALE IMAGE
-            // {
-            //     id: 5,
-            //     caption: "FEA Displacement analysis under 200N load",
-            //     type: "graph",
-            //     src: "/images/works/002/fea.png",
-            // },
+            {
+                id: 5,
+                caption:
+                    "Von Mises Stress analysis showing safe load distribution (Max 67.6 MPa)",
+                type: "analysis",
+                src: "/images/works/002/fea-stress.png",
+            },
+            {
+                id: 6,
+                caption:
+                    "Displacement analysis validating sensor isolation behavior",
+                type: "analysis",
+                src: "/images/works/002/fea-disp.png",
+            },
         ],
         impactMetrics: [
             {
-                label: "Data Safety",
-                before: "Wired",
-                after: "Wireless",
-                improvement: "100m Standoff",
+                label: "Safety Range",
+                before: "10m (Wired)",
+                after: "100m (Wireless)",
+                improvement: "10x Standoff",
             },
         ],
         beforeAfter: [
