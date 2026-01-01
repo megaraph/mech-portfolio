@@ -1,3 +1,8 @@
+export interface ProjectLink {
+    label: string;
+    url: string;
+}
+
 export interface ProjectImage {
     id: number;
     caption: string;
@@ -5,6 +10,7 @@ export interface ProjectImage {
         | "render"
         | "exploded"
         | "section view"
+        | "schematic"
         | "detail"
         | "photo"
         | "graph"
@@ -36,6 +42,7 @@ export interface ProjectData {
     emoji?: string;
     metrics?: ProjectMetric[];
     highlights?: string[];
+    links?: ProjectLink[];
     images?: ProjectImage[];
     failures?: number[];
     failureNotes?: string;
@@ -222,6 +229,105 @@ export const projectsData: ProjectData[] = [
                 afterCaption: "Fabricated Assembly",
                 beforeSrc: "/images/works/002/hero.png",
                 afterSrc: "/images/works/002/reference.png",
+            },
+        ],
+    },
+    {
+        id: "003",
+        name: "Tuned Mass Damper Research",
+        featured: true,
+        type: "Physical",
+        role: "Lead Researcher",
+        duration: "1 Week",
+        tools: "Python (SciPy), Arduino, MPU-6050",
+        status: "Published",
+        year: "2025",
+        category: "STRUCTURAL DYNAMICS",
+        skills: "SIGNAL PROCESSING / DAQ / VIBRATION ANALYSIS",
+        description:
+            "Experimental validation of passive vibration control systems using a variable-stiffness oscillating tower and custom Python telemetry.",
+        emoji: "📉",
+        tagline:
+            "Mitigating structural resonance through frequency-tuned passive damping",
+        background:
+            "Modern skyscrapers are susceptible to wind and seismic oscillations that compromise structural integrity. The objective was to empirically validate the physics of a Tuned Mass Damper (TMD) using a simplified Single Degree of Freedom (SDOF) model.",
+        execution:
+            "Constructed a flexible testing rig with an adjustable pendulum damper. Developed a custom DAQ system using an MPU-6050 accelerometer and Arduino to stream real-time vibration data to a Python dashboard for Fast Fourier Transform (FFT) analysis.",
+        metrics: [
+            { label: "Damping Increase", value: "+68%" }, // Improvement in Log Dec [cite: 25]
+            { label: "Natural Freq", value: "2.29 Hz" }, // Measured fn [cite: 21]
+            { label: "Tuning Length", value: "47.3 mm" }, // Calculated L [cite: 23]
+            { label: "Sample Rate", value: "100 Hz" }, // Sensor capability [cite: 191]
+            { label: "Algorithm", value: "Savitzky-Golay" }, // Filtering method [cite: 193]
+        ],
+        highlights: [
+            "Real-time signal processing pipeline using Python (SciPy/Matplotlib)",
+            "Logarithmic decrement analysis to quantify energy dissipation efficiency",
+            "Frequency domain identification (FFT) of structural natural modes",
+            "Hardware integration of MEMS accelerometers with serial telemetry",
+        ],
+        links: [
+            {
+                label: "Read Paper",
+                url: "https://drive.google.com/file/d/1Urj53TkxPSavPeiYhQufXObDKXYTeD-Y/view?usp=sharing",
+            },
+            {
+                label: "View Code",
+                url: "https://colab.research.google.com/drive/1E1IHy9mQynIf_j31I1eUttf3Zw4tPvlu?usp=sharing",
+            },
+        ],
+        images: [
+            {
+                id: 1,
+                caption:
+                    "Variable stiffness tower with adjustable pendulum damper",
+                type: "photo",
+                src: "/images/works/003/hero.png",
+            },
+            {
+                id: 2,
+                caption:
+                    "Amplitude decay comparison illustrating energy transfer (Beat Pattern)",
+                type: "graph",
+                src: "/images/works/003/result.png",
+            },
+            {
+                id: 3,
+                caption:
+                    "DAQ architecture: MPU-6050 integration with Arduino interface",
+                type: "schematic",
+                src: "/images/works/003/schematic.png",
+            },
+            {
+                id: 4,
+                caption:
+                    "Frequency domain analysis identifying natural frequency (2.29 Hz)",
+                type: "analysis",
+                src: "/images/works/003/fft.png",
+            },
+            {
+                id: 5,
+                caption:
+                    "Real-time Python telemetry dashboard for vibration monitoring",
+                type: "photo",
+                src: "/images/works/003/lab.png",
+            },
+        ],
+        impactMetrics: [
+            {
+                label: "Damping (Log Dec)",
+                before: "0.264",
+                after: "0.444",
+                improvement: "+68%",
+            },
+        ],
+        beforeAfter: [
+            {
+                id: 1,
+                beforeCaption: "Untuned Oscillation",
+                afterCaption: "Tuned Damping",
+                beforeSrc: "/images/works/003/untuned.png",
+                afterSrc: "/images/works/003/tuned.png",
             },
         ],
     },

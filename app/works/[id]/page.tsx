@@ -266,7 +266,37 @@ export default function WorksDetailPage() {
                                 </div>
                             </div>
                         )}
-
+                    {/* External Links Section */}
+                    {project.links && project.links.length > 0 && (
+                        <div className="mb-4 flex flex-col gap-2">
+                            {project.links.map((link, i) => (
+                                <a
+                                    key={i}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover-target flex items-center justify-between bg-industrial-ink/5 px-4 py-3 text-xs uppercase hover:bg-industrial-ink hover:text-white transition-all group"
+                                >
+                                    <span className="font-bold">
+                                        {link.label}
+                                    </span>
+                                    <svg
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="text-industrial-dim group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                                    >
+                                        <path d="M7 17l9.2-9.2M17 17V7H7" />
+                                    </svg>
+                                </a>
+                            ))}
+                        </div>
+                    )}
                     {/* Download Button */}
                     <Link
                         href={`/works/${projectId}/spec`}
