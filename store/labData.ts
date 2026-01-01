@@ -12,9 +12,9 @@ export const labItems: LabItem[] = [
         id: "001",
         image: "/images/lab/001.jpg",
         caption: "Manual lathe work — knurling lever handle",
-        date: "2024-12-15", // Adjust dates as needed
+        date: "2024-12-15",
         category: "prototype",
-        aspectRatio: "portrait", // Vertical composition
+        aspectRatio: "portrait",
     },
     {
         id: "008",
@@ -22,14 +22,14 @@ export const labItems: LabItem[] = [
         caption: "SRM (Solid Rocket Motor) static fire test",
         date: "2024-11-09",
         category: "test",
-        aspectRatio: "portrait", // The smoke plume looks best vertical
+        aspectRatio: "portrait",
     },
     {
         id: "005",
         image: "/images/lab/005.jpg",
         caption: "CNC mill calibration & Z-axis zeroing",
         date: "2024-12-05",
-        category: "other", // Fits "maintenance/setup"
+        category: "other",
         aspectRatio: "portrait",
     },
     {
@@ -37,7 +37,7 @@ export const labItems: LabItem[] = [
         image: "/images/lab/006.jpg",
         caption: "Scotch Yoke mechanism validation",
         date: "2024-10-20",
-        category: "failure", // You mentioned you didn't proceed—labeling it "failure" or "sketch" looks humble and authentic
+        category: "failure",
         aspectRatio: "landscape",
     },
     {
@@ -69,7 +69,7 @@ export const labItems: LabItem[] = [
         image: "/images/lab/003.jpg",
         caption: "Nail clipper assembly — CAD modeling",
         date: "2024-12-30",
-        category: "sketch", // "Sketch" works well for CAD/Digital work
+        category: "sketch",
         aspectRatio: "portrait",
     },
     {
@@ -79,5 +79,29 @@ export const labItems: LabItem[] = [
         date: "2024-10-05",
         category: "prototype",
         aspectRatio: "portrait",
+    },
+    {
+        id: "010",
+        image: "/images/lab/010.png",
+        caption: "DAQ Integration — MPU-6050 wiring harness",
+        date: "2025-01-12",
+        category: "prototype",
+        aspectRatio: "square",
+    },
+    {
+        id: "011",
+        image: "/images/lab/011.png",
+        caption: "DFM Check — Slicer toolpath vs. physical print",
+        date: "2025-01-14",
+        category: "prototype",
+        aspectRatio: "square",
+    },
+    {
+        id: "012",
+        image: "/images/lab/012.png",
+        caption: "Signal Processing — Raw vs. Smoothed data (Savitzky-Golay)",
+        date: "2025-01-18",
+        category: "test",
+        aspectRatio: "landscape",
     },
 ];
