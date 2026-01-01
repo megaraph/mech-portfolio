@@ -234,7 +234,7 @@ export const projectsData: ProjectData[] = [
     },
     {
         id: "003",
-        name: "Tuned Mass Damper Research",
+        name: "Tuned Mass Damper Experiment",
         featured: true,
         type: "Physical",
         role: "Lead Researcher",
