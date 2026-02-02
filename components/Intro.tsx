@@ -232,7 +232,7 @@ export default function Intro() {
                                             className="text-right"
                                         >
                                             <h2 className="font-mono text-xl md:text-5xl font-bold tracking-tighter text-industrial-orange leading-tight max-w-4xl">
-                                                I TURN DREAMS INTO REALITY
+                                                I ACTUALLY BUILD THINGS
                                             </h2>
                                         </motion.div>
                                     )}

@@ -10,7 +10,7 @@ export interface TimelineEntry {
 
 interface Skill {
     name: string;
-    category: "software" | "fabrication" | "specialty" | "soft";
+    category: "software" | "fabrication" | "interest" | "soft";
 }
 
 interface Principle {
@@ -105,6 +105,7 @@ export const skills: Skill[] = [
     { name: "Blender", category: "software" },
     { name: "SimScale", category: "software" },
     { name: "MATLAB", category: "software" },
+    { name: "KiCad", category: "software" },
     { name: "Python", category: "software" },
     { name: "C/C++", category: "software" },
     { name: "SQL", category: "software" },
@@ -115,15 +116,17 @@ export const skills: Skill[] = [
     { name: "3D Printing (FDM)", category: "fabrication" },
     { name: "CNC Milling", category: "fabrication" },
     { name: "Laser Cutting", category: "fabrication" },
-    { name: "Manual Machining", category: "fabrication" },
-    { name: "SMAW", category: "fabrication" },
+    { name: "PCB Soldering", category: "fabrication" },
+    { name: "Lathe Machining", category: "fabrication" },
+    { name: "Welding (SMAW)", category: "fabrication" },
 
-    // Specialties
-    { name: "Mechatronics", category: "specialty" },
-    { name: "FEA/CFD", category: "specialty" },
-    { name: "Rapid Prototyping", category: "specialty" },
-    { name: "DFAM", category: "specialty" },
-    { name: "CAM", category: "specialty" },
+    // Interests
+    { name: "Mechatronics", category: "interest" },
+    { name: "FEA/CFD", category: "interest" },
+    { name: "Rapid Prototyping", category: "interest" },
+    { name: "DFAM", category: "interest" },
+    { name: "CAM", category: "interest" },
+    { name: "Metrology", category: "interest" },
 
     // Soft Skills
     { name: "Technical Writing", category: "soft" },
@@ -161,7 +164,7 @@ export const principles: Principle[] = [
 export const stats: Stat[] = [
     { value: "247", label: "Prototypes Tested" },
     { value: "12", label: "Failed Prints This Month" },
-    { value: "∞", label: "Glasses of Oat Milk" },
+    { value: "∞", label: "Cups of Coffee" },
     { value: "5", label: "Programming Languages" },
     { value: "8", label: "Countries Visited" },
     { value: "1", label: "Passion for Making Things Work" },

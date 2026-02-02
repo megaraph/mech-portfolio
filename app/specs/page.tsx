@@ -13,13 +13,13 @@ import {
 
 export default function AboutPage() {
     const [expandedTimeline, setExpandedTimeline] = useState<string | null>(
-        null
+        null,
     );
 
     const groupedSkills = {
         software: skills.filter((s) => s.category === "software"),
         fabrication: skills.filter((s) => s.category === "fabrication"),
-        specialty: skills.filter((s) => s.category === "specialty"),
+        specialty: skills.filter((s) => s.category === "interest"),
         soft: skills.filter((s) => s.category === "soft"),
     };
 
@@ -49,11 +49,17 @@ export default function AboutPage() {
 
                     <div className="max-w-3xl">
                         <p className="font-mono text-base md:text-lg leading-relaxed text-industrial-ink/90">
-                            I design systems that are built, not just imagined.
-                            Working from CAD and sketches to machine, I aim to
-                            bridge imagination and physical fabrication. For me,
-                            engineering is a discipline of iteration, not just a
-                            moment of inspiration.
+                            I build prototypes because I like seeing ideas
+                            become real.
+                            <br></br>
+                            <br></br>
+                            I’m drawn to elegant solutions, especially tools I’d
+                            want to use myself. Most of my projects start from
+                            everyday problems, curiosity, or small moments that
+                            feel worth exploring. For me, engineering is less
+                            about grand ideas and more about careful iteration,
+                            physical constraints, and making things that simply
+                            work — and feel right.
                         </p>
                     </div>
                 </motion.section>
@@ -86,7 +92,7 @@ export default function AboutPage() {
                                         setExpandedTimeline(
                                             expandedTimeline === entry.id
                                                 ? null
-                                                : entry.id
+                                                : entry.id,
                                         )
                                     }
                                     index={index}
@@ -99,7 +105,7 @@ export default function AboutPage() {
                         </div>
 
                         {timelineData.filter(
-                            (entry) => entry.type === "experience"
+                            (entry) => entry.type === "experience",
                         ).length === 0 ? (
                             <div className="ml-8 font-mono text-xs text-industrial-dim/50 italic">
                                 {"// Add your experience here as you grow"}
@@ -118,7 +124,7 @@ export default function AboutPage() {
                                             setExpandedTimeline(
                                                 expandedTimeline === entry.id
                                                     ? null
-                                                    : entry.id
+                                                    : entry.id,
                                             )
                                         }
                                         index={index}
@@ -142,7 +148,7 @@ export default function AboutPage() {
                                         setExpandedTimeline(
                                             expandedTimeline === entry.id
                                                 ? null
-                                                : entry.id
+                                                : entry.id,
                                         )
                                     }
                                     index={index}
@@ -200,7 +206,7 @@ export default function AboutPage() {
                         {/* Specialties */}
                         <div>
                             <h3 className="font-mono text-[10px] uppercase tracking-wider text-industrial-dim mb-4">
-                                [SPECIALTIES]
+                                [INTERESTS]
                             </h3>
                             <div className="flex flex-wrap gap-3">
                                 {groupedSkills.specialty.map((skill) => (
