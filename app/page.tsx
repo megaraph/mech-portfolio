@@ -13,7 +13,9 @@ export default function Home() {
     const router = useRouter();
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
-    const featuredProjects = projectsData.filter((p) => p.featured);
+    const featuredProjects = projectsData
+        .filter((p) => p.featured)
+        .sort((a, b) => Number(b.id) - Number(a.id));
 
     return (
         <>
