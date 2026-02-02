@@ -240,7 +240,7 @@ export const projectsData: ProjectData[] = [
         role: "Lead Researcher",
         duration: "1 Week",
         tools: "Python (SciPy), Arduino, MPU-6050",
-        status: "Published",
+        status: "Experimental Validation",
         year: "2025",
         category: "STRUCTURAL DYNAMICS",
         skills: "SIGNAL PROCESSING / DAQ / VIBRATION ANALYSIS",
@@ -328,6 +328,97 @@ export const projectsData: ProjectData[] = [
                 afterCaption: "Tuned Damping",
                 beforeSrc: "/images/works/003/untuned.png",
                 afterSrc: "/images/works/003/tuned.png",
+            },
+        ],
+    },
+    {
+        id: "004",
+        name: "Adaptive Vacuum Nozzle",
+        featured: true,
+        type: "Physical",
+        role: "Design Engineer",
+        duration: "2 Days",
+        tools: "SimScale (CFD), OnShape, Orca Slicer, Bambu Lab A1",
+        status: "Operational",
+        year: "2026",
+        category: "FLUID DYNAMICS / ADDITIVE MFG",
+        skills: "CFD ANALYSIS / DFAM / RAPID PROTOTYPING",
+        description:
+            "Development of a high-velocity vacuum cleaner attachment for precision cleaning of the Bambu Lab A1 eletronics bay, featuring a passive bypass system for motor thermal management.",
+        emoji: "💨",
+        tagline:
+            "Safely maintaining airflow and suction performance in tight electronic enclosures",
+        background:
+            "Cleaning the electronics bay of consumer 3D printers in high-density condo environments presents unique contamination challenges such as dust, cockroach waste and eggs, and other types of debris. Narrow geometries can easily block standard vacuum nozzles, leading to sudden airflow restriction that causes 600 W vacuum motors to rapidly overheat or stall.",
+        execution:
+            "Designed and fabricated a custom vacuum nozzle with a passive airflow bypass that maintains intake flow if the primary opening becomes obstructed. The internal geometry balances suction effectiveness with motor safety by reducing sudden inlet restriction. Airflow behavior was validated using CFD in SimScale, and the part was optimized for FDM printing that minimized the need for unnecessary amounts of internal supports.",
+        metrics: [
+            { label: "Tip Velocity", value: "32+ m/s" }, // Confirmed via CFD Streamlines
+            { label: "Pressure Drop", value: "-2.0 kPa" }, // Minimal motor impedance
+            { label: "Tip Clearance", value: "8.0 mm" }, // Geometric constraint met
+            { label: "Reynolds No.", value: "32,800" }, // Validated by Reynolds check
+            { label: "Material", value: "Matte PLA" }, // Aesthetic choice
+        ],
+        highlights: [
+            "Passive Bypass Architecture to prevent vacuum motor stall/overheating",
+            "CFD validation of pressure recovery and laminar flow topology",
+            "Venturi-accelerated tip velocity (>30 m/s) for heavy debris entrainment",
+        ],
+        images: [
+            {
+                id: 1,
+                caption:
+                    "Matte black PLA prototype rendered in Blender with chamfered 'Industrial Editor' topology",
+                type: "photo",
+                src: "/images/works/004/hero.jpg",
+            },
+            {
+                id: 2,
+                caption:
+                    "Operational clearance check within the restricted geometry of the Y-axis electronics bay",
+                type: "photo",
+                src: "/images/works/004/insitu.jpg",
+            },
+            {
+                id: 3,
+                caption:
+                    "CFD simulation confirms Venturi-accelerated tip velocity (>38 m/s) for debris entrainment",
+                type: "analysis",
+                src: "/images/works/004/cfd-velocity-cleaning.png",
+            },
+            {
+                id: 4,
+                caption:
+                    "Pressure gradient simulation proving efficient pressure recovery (-2 kPa drop)",
+                type: "analysis",
+                src: "/images/works/004/cfd-pressure-side.png",
+            },
+            {
+                id: 5,
+                caption:
+                    "Integrated passive bypass array (knurled section) decoupling cooling airflow from suction velocity",
+                type: "photo",
+                src: "/images/works/004/vents.jpg",
+            },
+            {
+                id: 6,
+                caption: "Orthographic projections",
+                type: "schematic",
+                src: "/images/works/004/drawing.png",
+            },
+            {
+                id: 7,
+                caption: "Final Physical Product",
+                type: "schematic",
+                src: "/images/works/004/physical.jpg",
+            },
+        ],
+        impactMetrics: [
+            {
+                label: "Geometric Clearance",
+                before: "35.0 mm (Standard OEM)",
+                after: "8.0 mm (Custom Profile)",
+                improvement: "4.3x Access",
             },
         ],
     },
