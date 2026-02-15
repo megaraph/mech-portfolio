@@ -27,15 +27,19 @@ export default function Home() {
     const router = useRouter();
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
-    // Pull featured projects, highest ID first
-    const featuredProjects = projectsData
-        .filter((p) => p.featured)
-        .sort((a, b) => Number(b.id) - Number(a.id));
+    // All featured projects
+    const featuredProjects = projectsData.filter((p) => p.featured);
 
-    // Hero project = most recently featured
-    const heroProject = featuredProjects[0];
-    // Supporting two
-    const supportingProjects = featuredProjects.slice(1, 3);
+    // Hero = explicit hero flag; fallback to highest ID if none is set
+    const heroProject =
+        featuredProjects.find((p) => p.hero) ??
+        featuredProjects.sort((a, b) => Number(b.id) - Number(a.id))[0];
+
+    // Supporting = all featured except the hero, sorted by ID descending
+    const supportingProjects = featuredProjects
+        .filter((p) => p.id !== heroProject?.id)
+        .sort((a, b) => Number(b.id) - Number(a.id))
+        .slice(0, 2);
 
     return (
         <>

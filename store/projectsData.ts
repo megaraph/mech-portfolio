@@ -27,6 +27,7 @@ export interface ProjectData {
     id: string;
     name: string;
     featured?: boolean;
+    hero?: boolean; // true on exactly ONE project — controls the index page hero slot
     type: "Physical" | "Digital";
     role: string;
     duration: string;
@@ -65,7 +66,6 @@ export const projectsData: ProjectData[] = [
     {
         id: "001",
         name: "Nail Clipper Replica",
-        featured: true,
         type: "Digital",
         role: "Reverse Engineer",
         duration: "6 Days",
@@ -144,6 +144,7 @@ export const projectsData: ProjectData[] = [
         id: "002",
         name: "Rocket Static Fire Stand",
         featured: true,
+        hero: true, // ← HERO SLOT — move this flag to change the index page hero
         type: "Physical",
         role: "Lead Engineer",
         duration: "2 Weeks",
