@@ -100,24 +100,25 @@ export const timelineData: TimelineEntry[] = [
 export const skills: Skill[] = [
     // Software
     { name: "SolidWorks", category: "software" },
+    { name: "Python", category: "software" },
     { name: "Fusion 360", category: "software" },
     { name: "OnShape", category: "software" },
     { name: "Blender", category: "software" },
     { name: "SimScale", category: "software" },
     { name: "MATLAB", category: "software" },
     { name: "KiCad", category: "software" },
-    { name: "Python", category: "software" },
     { name: "C/C++", category: "software" },
     { name: "SQL", category: "software" },
     { name: "React", category: "software" },
     { name: "Figma", category: "software" },
+    { name: "Orca Slicer", category: "software" },
 
     // Fabrication
     { name: "3D Printing (FDM)", category: "fabrication" },
-    { name: "CNC Milling", category: "fabrication" },
-    { name: "Laser Cutting", category: "fabrication" },
     { name: "PCB Soldering", category: "fabrication" },
     { name: "Lathe Machining", category: "fabrication" },
+    { name: "CNC Milling", category: "fabrication" },
+    { name: "Laser Cutting", category: "fabrication" },
     { name: "Welding (SMAW)", category: "fabrication" },
 
     // Interests
