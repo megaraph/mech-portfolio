@@ -167,7 +167,7 @@ export default function Home() {
                     <div className="flex-1 h-px bg-industrial-ink/10" />
                     <span className="font-mono text-[10px] text-industrial-ink/30 uppercase tracking-widest">
                         {featuredProjects.length.toString().padStart(2, "0")}{" "}
-                        Featured
+                        Total Projects
                     </span>
                 </div>
             </div>
